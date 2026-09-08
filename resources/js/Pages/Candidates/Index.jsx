@@ -19,9 +19,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 const statusStyles = {
     Available: 'bg-emerald-50 text-emerald-700',
-    Interview:  'bg-yellow-50 text-yellow-700',
-    Hired:      'bg-blue-50 text-blue-700',
-    Rejected:   'bg-red-50 text-red-700',
+    Interview: 'bg-yellow-50 text-yellow-700',
+    Hired: 'bg-blue-50 text-blue-700',
+    Rejected: 'bg-red-50 text-red-700',
 };
 
 export default function Index({ candidates = [], filters = {} }) {
@@ -89,7 +89,7 @@ export default function Index({ candidates = [], filters = {} }) {
                 </div>
 
                 {/* ── AI MATCHING BANNER ────────────────────────── */}
-                <div className="relative mt-6 overflow-hidden rounded-2xl bg-gradient-to-br from-[#043927] via-[#0B5D45] to-[#16A085] p-6 text-white shadow-sm">
+                <div className="relative mt-6 overflow-hidden rounded-2xl bg-gradient-to-br from-[#043927] via-[#0B5D45] to-[#16A085] p-6 text-white shadow-xl shadow-[#043927]/20 transition-all duration-300 hover:scale-[1.01]">
 
                     {/* decorative circles */}
                     <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-[24px] border-white/10" />
@@ -135,12 +135,12 @@ export default function Index({ candidates = [], filters = {} }) {
                 <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-3">
                     {[
                         { label: 'Total Candidates', value: candidates.length },
-                        { label: 'Available',         value: candidates.filter(c => c.status === 'Available').length },
-                        { label: 'Hasil Filter',      value: visible.length },
+                        { label: 'Available', value: candidates.filter(c => c.status === 'Available').length },
+                        { label: 'Hasil Filter', value: visible.length },
                     ].map(({ label, value }) => (
-                        <div key={label} className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+                        <div key={label} className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                             <p className="text-[10px] font-medium text-gray-400">{label}</p>
-                            <p className="mt-1 text-xl font-bold text-gray-900">{value}</p>
+                            <p className="mt-1 text-xl font-bold rounded-lg text-transparent bg-clip-text bg-gradient-to-r from-[#16A085] to-[#043927]">{value}</p>
                         </div>
                     ))}
                 </div>
@@ -167,11 +167,10 @@ export default function Index({ candidates = [], filters = {} }) {
                                 <button
                                     key={item}
                                     onClick={() => setFilter(item)}
-                                    className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
-                                        filter === item
+                                    className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-semibold transition ${filter === item
                                             ? 'bg-[#043927] text-white shadow-sm'
                                             : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-                                    }`}
+                                        }`}
                                 >
                                     {item}
                                 </button>
@@ -222,7 +221,7 @@ export default function Index({ candidates = [], filters = {} }) {
 
 function CandidateCard({ candidate, outreachSent, onOutreach }) {
     return (
-        <div className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#65D6B5]/50 hover:shadow-xl hover:shadow-[#16A085]/10">
 
             {/* top row */}
             <div className="flex items-start justify-between">
@@ -298,11 +297,10 @@ function CandidateCard({ candidate, outreachSent, onOutreach }) {
                 <button
                     onClick={onOutreach}
                     disabled={outreachSent}
-                    className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold transition ${
-                        outreachSent
+                    className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold transition ${outreachSent
                             ? 'cursor-default bg-emerald-50 text-emerald-600'
                             : 'bg-[#E4F3EE] text-[#043927] hover:bg-[#043927] hover:text-white'
-                    }`}
+                        }`}
                 >
                     <Send size={12} />
                     {outreachSent ? 'Sent' : 'Outreach'}

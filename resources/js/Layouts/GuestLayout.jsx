@@ -11,10 +11,10 @@ export default function GuestLayout({ children }) {
                 ========================================== */}
                 <div className="relative hidden w-1/2 overflow-hidden bg-[#043927] lg:flex">
 
-                    {/* Decorative circles */}
-                    <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full border-[50px] border-[#0B5D45]" />
-
-                    <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full border-[50px] border-[#0B5D45]" />
+                    {/* Decorative Glowing Orbs */}
+                    <div className="absolute -right-32 -top-32 h-[550px] w-[550px] rounded-full bg-gradient-to-bl from-[#65D6B5] to-[#16A085] opacity-40 blur-[100px] animate-pulse mix-blend-screen" />
+                    <div className="absolute -bottom-32 -left-32 h-[650px] w-[650px] rounded-full bg-gradient-to-tr from-[#16A085] to-[#043927] opacity-60 blur-[120px] mix-blend-screen" />
+                    <div className="absolute bottom-20 right-20 h-[300px] w-[300px] rounded-full bg-[#65D6B5] opacity-10 blur-[80px]" />
 
                     <div className="relative z-10 flex w-full flex-col justify-between p-12 xl:p-16">
 
@@ -166,7 +166,7 @@ function Feature({
     text,
 }) {
     return (
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-2xl">
 
             <p className="text-[9px] font-bold text-[#65D6B5]">
                 {number}

@@ -12,7 +12,7 @@ export default function CandidateCard({
     initials = 'AR',
 }) {
     return (
-        <div className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#16A085]/10">
 
             {/* TOP ROW — avatar + name + score */}
             <div className="flex items-start gap-3">

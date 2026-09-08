@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Match as CandidateMatch;
+use App\Models\CandidateMatch;
 
 class Job extends Model
 {
@@ -26,7 +26,7 @@ class Job extends Model
 
     protected $casts = [
         'requirements' => 'array',
-        'deadline'     => 'date',
+        'deadline' => 'date',
     ];
 
     public function interviews()

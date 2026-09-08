@@ -95,15 +95,15 @@ export default function Dashboard() {
 
                     <div className="flex shrink-0 gap-2">
 
-                        <button className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
+                        <Link href={route('cv.import')} className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-700 shadow-sm hover:bg-gray-50">
                             <Upload size={14} />
                             Import CV
-                        </button>
+                        </Link>
 
-                        <button className="flex items-center gap-2 rounded-xl bg-[#043927] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#0B5D45]">
+                        <Link href={route('jobs.create')} className="flex items-center gap-2 rounded-xl bg-[#043927] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#0B5D45]">
                             <Plus size={14} />
                             New Vacancy
-                        </button>
+                        </Link>
 
                     </div>
                 </div>
@@ -168,7 +168,7 @@ export default function Dashboard() {
                             </div>
 
                             <Link
-                                href="#"
+                                href={route('candidates.index')}
                                 className="flex shrink-0 items-center gap-1 text-[11px] font-semibold text-[#043927]"
                             >
                                 View all
@@ -261,24 +261,28 @@ export default function Dashboard() {
                             icon={Upload}
                             title="Import CV"
                             description="Upload CV kandidat"
+                            href={route('cv.import')}
                         />
 
                         <QuickAction
                             icon={Brain}
                             title="AI Matching"
                             description="Cari kandidat terbaik"
+                            href={route('candidates.index')}
                         />
 
                         <QuickAction
                             icon={BriefcaseBusiness}
                             title="Create Vacancy"
                             description="Buat lowongan baru"
+                            href={route('jobs.create')}
                         />
 
                         <QuickAction
                             icon={Search}
                             title="Find Talent"
                             description="Cari database talent"
+                            href={route('candidates.index')}
                         />
 
                     </div>
@@ -316,7 +320,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* TALENTLOOP PROMO CARD */}
-                    <div className="relative overflow-hidden rounded-2xl bg-[#043927] p-6 text-white shadow-sm">
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#043927] to-[#01140E] p-6 text-white shadow-xl shadow-[#043927]/20">
 
                         <div className="relative z-10">
 
@@ -335,15 +339,15 @@ export default function Dashboard() {
                                 lama sebelum mencari kandidat baru.
                             </p>
 
-                            <button className="mt-5 rounded-xl bg-white px-4 py-2.5 text-xs font-bold text-[#043927] hover:bg-gray-100">
+                            <Link href={route('candidates.index')} className="mt-5 inline-block rounded-xl bg-white px-4 py-2.5 text-xs font-bold text-[#043927] hover:bg-gray-100">
                                 Explore Talent Pool
-                            </button>
+                            </Link>
 
                         </div>
 
                         {/* DECORATION */}
-                        <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border-[30px] border-[#0B5D45]" />
-                        <div className="absolute -bottom-20 right-20 h-40 w-40 rounded-full border-[25px] border-[#16A085]/20" />
+                        <div className="absolute -right-16 -top-16 h-[200px] w-[200px] rounded-full bg-gradient-to-bl from-[#65D6B5] to-[#16A085] opacity-20 blur-[50px] mix-blend-screen" />
+                        <div className="absolute -bottom-20 right-20 h-[150px] w-[150px] rounded-full bg-[#16A085] opacity-30 blur-[40px]" />
 
                     </div>
 
@@ -358,11 +362,11 @@ export default function Dashboard() {
 
 /* ─── QUICK ACTION ──────────────────────────────────────────── */
 
-function QuickAction({ icon: Icon, title, description }) {
+function QuickAction({ icon: Icon, title, description, href = '#' }) {
     return (
-        <button className="group rounded-2xl border border-gray-100 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#CDE8DF] hover:shadow-md">
+        <Link href={href} className="group rounded-2xl border border-gray-100 bg-white p-4 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#65D6B5]/50 hover:shadow-xl hover:shadow-[#16A085]/10">
 
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E4F3EE] text-[#043927] transition group-hover:bg-[#043927] group-hover:text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E4F3EE] to-white text-[#043927] shadow-sm transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#16A085] group-hover:to-[#043927] group-hover:text-white group-hover:shadow-[#16A085]/30">
                 <Icon size={18} />
             </div>
 
@@ -374,7 +378,7 @@ function QuickAction({ icon: Icon, title, description }) {
                 {description}
             </p>
 
-        </button>
+        </Link>
     );
 }
 

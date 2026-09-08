@@ -3,9 +3,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { ArrowLeft, MapPin, Clock, Briefcase, Users, Star, CalendarCheck, CheckCircle2, Trash2 } from 'lucide-react';
 
 const statusStyles = {
-    Open:   'bg-emerald-50 text-emerald-700',
+    Open: 'bg-emerald-50 text-emerald-700',
     Closed: 'bg-gray-100   text-gray-500',
-    Draft:  'bg-yellow-50  text-yellow-700',
+    Draft: 'bg-yellow-50  text-yellow-700',
 };
 
 export default function Show({ job }) {
@@ -43,7 +43,7 @@ export default function Show({ job }) {
                     <div className="space-y-5">
 
                         {/* JOB DETAIL */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <div className="flex flex-wrap items-center gap-2">
                                 <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusStyles[job.status]}`}>{job.status}</span>
                                 <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">{job.type}</span>
@@ -78,7 +78,7 @@ export default function Show({ job }) {
                         </div>
 
                         {/* MATCHED CANDIDATES */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <div className="flex items-center justify-between">
                                 <h3 className="text-sm font-bold text-gray-900">Kandidat Cocok</h3>
                                 <span className="text-xs text-gray-400">{job.matches?.length ?? 0} kandidat</span>
@@ -115,7 +115,7 @@ export default function Show({ job }) {
                     <div className="space-y-5">
 
                         {/* QUICK STATS */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <h3 className="mb-4 text-sm font-bold text-gray-900">Overview</h3>
                             <div className="space-y-3">
                                 <Stat icon={Users} label="Total Match" value={job.matches?.length ?? 0} />
@@ -124,7 +124,7 @@ export default function Show({ job }) {
                         </div>
 
                         {/* ACTIONS */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <h3 className="mb-4 text-sm font-bold text-gray-900">Quick Actions</h3>
                             <div className="space-y-2">
                                 <Link href={route('interviews.create')}

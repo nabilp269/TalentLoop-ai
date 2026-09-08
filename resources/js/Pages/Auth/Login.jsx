@@ -81,7 +81,7 @@ export default function Login({ status, canResetPassword }) {
                             type="email"
                             name="email"
                             value={data.email}
-                            className="block w-full rounded-xl border-gray-200 px-4 py-3 text-sm shadow-sm focus:border-[#16A085] focus:ring-[#16A085]"
+                            className="mt-2 block w-full"
                             autoComplete="username"
                             isFocused={true}
                             onChange={(e) =>
@@ -124,7 +124,7 @@ export default function Login({ status, canResetPassword }) {
                             type="password"
                             name="password"
                             value={data.password}
-                            className="mt-2 block w-full rounded-xl border-gray-200 px-4 py-3 text-sm shadow-sm focus:border-[#16A085] focus:ring-[#16A085]"
+                            className="mt-2 block w-full"
                             autoComplete="current-password"
                             onChange={(e) =>
                                 setData('password', e.target.value)
@@ -164,7 +164,7 @@ export default function Login({ status, canResetPassword }) {
                     <button
                         type="submit"
                         disabled={processing}
-                        className="flex w-full items-center justify-center rounded-xl bg-[#043927] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#0B5D45] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-[#16A085] to-[#043927] px-4 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:scale-[1.01] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#16A085]/20 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {processing
                             ? 'Signing in...'

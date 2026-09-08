@@ -17,9 +17,9 @@ import { useState } from 'react';
 
 const statusStyles = {
     Available: 'bg-emerald-50 text-emerald-700',
-    Interview:  'bg-yellow-50  text-yellow-700',
-    Hired:      'bg-blue-50    text-blue-700',
-    Rejected:   'bg-red-50     text-red-700',
+    Interview: 'bg-yellow-50  text-yellow-700',
+    Hired: 'bg-blue-50    text-blue-700',
+    Rejected: 'bg-red-50     text-red-700',
 };
 
 export default function Show({ candidate }) {
@@ -27,8 +27,8 @@ export default function Show({ candidate }) {
 
     const outreachForm = useForm({
         candidate_id: candidate.id,
-        channel:      'Email',
-        message:      '',
+        channel: 'Email',
+        message: '',
     });
 
     function sendOutreach(e) {
@@ -80,7 +80,7 @@ export default function Show({ candidate }) {
                     <div className="space-y-5">
 
                         {/* PROFILE CARD */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <div className="flex items-start gap-4">
                                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#E8F3EE] text-xl font-bold text-[#043927]">
                                     {candidate.initials}
@@ -148,7 +148,7 @@ export default function Show({ candidate }) {
                         </div>
 
                         {/* INTERVIEW HISTORY */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <div className="flex items-center justify-between">
                                 <h3 className="text-sm font-bold text-gray-900">Interview Log</h3>
                                 <Link
@@ -174,11 +174,10 @@ export default function Show({ candidate }) {
                                                     {iv.scheduled_at} · {iv.type}
                                                 </p>
                                             </div>
-                                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-                                                iv.status === 'Done'      ? 'bg-emerald-50 text-emerald-700' :
-                                                iv.status === 'Cancelled' ? 'bg-red-50 text-red-600'        :
-                                                                            'bg-yellow-50 text-yellow-700'
-                                            }`}>
+                                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${iv.status === 'Done' ? 'bg-emerald-50 text-emerald-700' :
+                                                    iv.status === 'Cancelled' ? 'bg-red-50 text-red-600' :
+                                                        'bg-yellow-50 text-yellow-700'
+                                                }`}>
                                                 {iv.status}
                                             </span>
                                         </div>
@@ -195,12 +194,12 @@ export default function Show({ candidate }) {
                     <div className="space-y-5">
 
                         {/* QUICK ACTIONS */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <h3 className="mb-4 text-sm font-bold text-gray-900">Quick Actions</h3>
                             <div className="space-y-2">
                                 <button
                                     onClick={() => setShowOutreach(true)}
-                                    className="flex w-full items-center gap-3 rounded-xl bg-[#043927] px-4 py-3 text-sm font-semibold text-white hover:bg-[#0B5D45]"
+                                    className="flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-[#16A085] to-[#043927] px-4 py-3 text-sm font-bold text-white shadow-md transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-[#16A085]/30"
                                 >
                                     <Send size={16} />
                                     Kirim Outreach
@@ -229,7 +228,7 @@ export default function Show({ candidate }) {
                         </div>
 
                         {/* OUTREACH HISTORY */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#16A085]/10">
                             <h3 className="mb-4 text-sm font-bold text-gray-900">Outreach History</h3>
                             {candidate.outreach?.length > 0 ? (
                                 <div className="space-y-3">
@@ -240,11 +239,10 @@ export default function Show({ candidate }) {
                                                     <MessageSquare size={13} className="text-[#043927]" />
                                                     <span className="text-xs font-semibold text-gray-700">{o.channel}</span>
                                                 </div>
-                                                <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-                                                    o.status === 'Replied'    ? 'bg-emerald-50 text-emerald-700' :
-                                                    o.status === 'No Response'? 'bg-red-50 text-red-600'        :
-                                                                                'bg-blue-50 text-blue-700'
-                                                }`}>
+                                                <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${o.status === 'Replied' ? 'bg-emerald-50 text-emerald-700' :
+                                                        o.status === 'No Response' ? 'bg-red-50 text-red-600' :
+                                                            'bg-blue-50 text-blue-700'
+                                                    }`}>
                                                     {o.status}
                                                 </span>
                                             </div>
@@ -268,7 +266,7 @@ export default function Show({ candidate }) {
             {/* OUTREACH MODAL */}
             {showOutreach && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-                    <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md rounded-3xl border border-white/20 bg-white/95 p-6 shadow-2xl backdrop-blur-xl">
                         <h3 className="text-base font-bold text-gray-900">Kirim Outreach</h3>
                         <p className="mt-0.5 text-xs text-gray-400">ke {candidate.name}</p>
 

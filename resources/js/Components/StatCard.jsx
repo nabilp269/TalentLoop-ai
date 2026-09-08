@@ -9,7 +9,7 @@ export default function StatCard({
     trendUp = true,
 }) {
     return (
-        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#16A085]/10">
 
             <div className="flex items-start justify-between">
 
@@ -38,11 +38,10 @@ export default function StatCard({
 
                 {trend && (
                     <span
-                        className={`text-[10px] font-semibold ${
-                            trendUp
+                        className={`text-[10px] font-semibold ${trendUp
                                 ? 'text-emerald-600'
                                 : 'text-red-500'
-                        }`}
+                            }`}
                     >
                         {trend}
                     </span>

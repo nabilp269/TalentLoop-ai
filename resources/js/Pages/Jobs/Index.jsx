@@ -4,15 +4,15 @@ import { Plus, Search, Briefcase, MapPin, Clock, Users, ChevronRight, Trash2 } f
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 const statusStyles = {
-    Open:   'bg-emerald-50 text-emerald-700',
+    Open: 'bg-emerald-50 text-emerald-700',
     Closed: 'bg-gray-100   text-gray-500',
-    Draft:  'bg-yellow-50  text-yellow-700',
+    Draft: 'bg-yellow-50  text-yellow-700',
 };
 
 const typeStyles = {
-    'Full-time':  'bg-blue-50   text-blue-700',
-    'Part-time':  'bg-purple-50 text-purple-700',
-    'Contract':   'bg-orange-50 text-orange-700',
+    'Full-time': 'bg-blue-50   text-blue-700',
+    'Part-time': 'bg-purple-50 text-purple-700',
+    'Contract': 'bg-orange-50 text-orange-700',
     'Internship': 'bg-pink-50   text-pink-700',
 };
 
@@ -49,7 +49,7 @@ export default function Index({ jobs = [], filters = {} }) {
                         <p className="mt-1 text-sm text-gray-400">Kelola semua lowongan pekerjaan aktif.</p>
                     </div>
                     <Link href={route('jobs.create')}
-                        className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#043927] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#0B5D45]">
+                        className="inline-flex shrink-0 items-center gap-2 rounded-2xl bg-gradient-to-r from-[#16A085] to-[#043927] px-5 py-2.5 text-xs font-bold text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#16A085]/30">
                         <Plus size={14} /> Buat Lowongan
                     </Link>
                 </div>
@@ -57,13 +57,13 @@ export default function Index({ jobs = [], filters = {} }) {
                 {/* STATS */}
                 <div className="mt-6 grid grid-cols-3 gap-3">
                     {[
-                        { label: 'Total',  value: jobs.length },
-                        { label: 'Open',   value: jobs.filter(j => j.status === 'Open').length },
+                        { label: 'Total', value: jobs.length },
+                        { label: 'Open', value: jobs.filter(j => j.status === 'Open').length },
                         { label: 'Closed', value: jobs.filter(j => j.status === 'Closed').length },
                     ].map(({ label, value }) => (
-                        <div key={label} className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+                        <div key={label} className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                             <p className="text-[10px] font-medium text-gray-400">{label}</p>
-                            <p className="mt-1 text-xl font-bold text-gray-900">{value}</p>
+                            <p className="mt-1 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-tr from-[#16A085] to-[#043927]">{value}</p>
                         </div>
                     ))}
                 </div>
@@ -79,9 +79,8 @@ export default function Index({ jobs = [], filters = {} }) {
                     <div className="flex gap-2 overflow-x-auto pb-0.5">
                         {['All', 'Open', 'Closed', 'Draft'].map((s) => (
                             <button key={s} onClick={() => setStatus(s)}
-                                className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
-                                    status === s ? 'bg-[#043927] text-white' : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-                                }`}>
+                                className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-semibold transition ${status === s ? 'bg-[#043927] text-white' : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                                    }`}>
                                 {s}
                             </button>
                         ))}
@@ -92,7 +91,7 @@ export default function Index({ jobs = [], filters = {} }) {
                 <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {visible.map((job) => (
                         <div key={job.id}
-                            className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                            className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#65D6B5]/50 hover:shadow-xl hover:shadow-[#16A085]/10">
 
                             <div className="flex items-start justify-between gap-2">
                                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E4F3EE] text-[#043927]">
