@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*
     | AI Matching
     */
-    Route::get('/matching', fn() => Inertia::render('Matching/Index'))->name('matching.index');
+    Route::get('/matching', fn() => redirect()->route('candidates.index', ['tab' => 'matching']))->name('matching.index');
 
 
     /*

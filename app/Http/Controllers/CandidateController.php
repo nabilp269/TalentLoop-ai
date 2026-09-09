@@ -41,9 +41,12 @@ class CandidateController extends Controller
             'cv_path'          => $c->cv_path,
         ]);
 
+        $jobs = Job::where('status', 'Open')->get(['id', 'title', 'department', 'requirements']);
+
         return Inertia::render('Candidates/Index', [
             'candidates' => $candidates,
-            'filters'    => $request->only('search', 'status'),
+            'jobs'       => $jobs,
+            'filters'    => $request->only('search', 'status', 'tab'),
         ]);
     }
 

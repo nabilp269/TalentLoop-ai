@@ -318,7 +318,7 @@ export default function Dashboard() {
                             icon={Brain}
                             title="AI Matching"
                             description="Cari kandidat terbaik"
-                            href={route('matching.index')}
+                            href={route('candidates.index', { tab: 'matching' })}
                         />
 
                         <QuickAction
