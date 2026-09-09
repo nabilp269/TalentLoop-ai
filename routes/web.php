@@ -16,7 +16,7 @@ use Inertia\Inertia;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', fn () => redirect()->route('dashboard'));
+Route::get('/', fn() => redirect()->route('dashboard'));
 
 
 /*
@@ -30,50 +30,56 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*
     | Dashboard
     */
-    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+    Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');
 
 
     /*
     | Candidates
     */
-    Route::get('/candidates',              [CandidateController::class, 'index'])  ->name('candidates.index');
-    Route::get('/candidates/create',       [CandidateController::class, 'create']) ->name('candidates.create');
-    Route::post('/candidates',             [CandidateController::class, 'store'])  ->name('candidates.store');
-    Route::get('/candidates/{candidate}',  [CandidateController::class, 'show'])   ->name('candidates.show');
-    Route::patch('/candidates/{candidate}',[CandidateController::class, 'update']) ->name('candidates.update');
-    Route::delete('/candidates/{candidate}',[CandidateController::class,'destroy'])->name('candidates.destroy');
+    Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+    Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
+    Route::post('/candidates', [CandidateController::class, 'store'])->name('candidates.store');
+    Route::get('/candidates/{candidate}', [CandidateController::class, 'show'])->name('candidates.show');
+    Route::patch('/candidates/{candidate}', [CandidateController::class, 'update'])->name('candidates.update');
+    Route::delete('/candidates/{candidate}', [CandidateController::class, 'destroy'])->name('candidates.destroy');
 
 
     /*
     | CV Import
     */
-    Route::get('/cv/import',  [CVController::class, 'import'])->name('cv.import');
-    Route::post('/cv/import', [CVController::class, 'store']) ->name('cv.store');
+    Route::get('/cv/import', [CVController::class, 'import'])->name('cv.import');
+    Route::post('/cv/import', [CVController::class, 'store'])->name('cv.store');
+
+
+    /*
+    | AI Matching
+    */
+    Route::get('/matching', fn() => Inertia::render('Matching/Index'))->name('matching.index');
 
 
     /*
     | Jobs / Vacancies
     */
-    Route::get('/jobs',              [JobController::class, 'index'])  ->name('jobs.index');
-    Route::get('/jobs/create',       [JobController::class, 'create']) ->name('jobs.create');
-    Route::post('/jobs',             [JobController::class, 'store'])  ->name('jobs.store');
-    Route::get('/jobs/{job}',        [JobController::class, 'show'])   ->name('jobs.show');
-    Route::delete('/jobs/{job}',     [JobController::class, 'destroy'])->name('jobs.destroy');
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+    Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+    Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+    Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+    Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
 
 
     /*
     | Interviews
     */
-    Route::get('/interviews',              [InterviewController::class, 'index'])  ->name('interviews.index');
-    Route::get('/interviews/create',       [InterviewController::class, 'create']) ->name('interviews.create');
-    Route::post('/interviews',             [InterviewController::class, 'store'])  ->name('interviews.store');
-    Route::patch('/interviews/{interview}',[InterviewController::class, 'update']) ->name('interviews.update');
+    Route::get('/interviews', [InterviewController::class, 'index'])->name('interviews.index');
+    Route::get('/interviews/create', [InterviewController::class, 'create'])->name('interviews.create');
+    Route::post('/interviews', [InterviewController::class, 'store'])->name('interviews.store');
+    Route::patch('/interviews/{interview}', [InterviewController::class, 'update'])->name('interviews.update');
 
 
     /*
     | Outreach
     */
-    Route::get('/outreach',  [OutreachController::class, 'index'])->name('outreach.index');
+    Route::get('/outreach', [OutreachController::class, 'index'])->name('outreach.index');
     Route::post('/outreach', [OutreachController::class, 'store'])->name('outreach.store');
 
 
@@ -86,17 +92,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*
     | Settings
     */
-    Route::get('/settings', fn () => Inertia::render('Settings/Index'))->name('settings.index');
+    Route::get('/settings', fn() => Inertia::render('Settings/Index'))->name('settings.index');
 
 
     /*
     | Profile
     */
-    Route::get('/profile',    [ProfileController::class, 'edit'])   ->name('profile.edit');
-    Route::patch('/profile',  [ProfileController::class, 'update']) ->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

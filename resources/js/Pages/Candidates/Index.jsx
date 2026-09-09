@@ -123,10 +123,13 @@ export default function Index({ candidates = [], filters = {} }) {
                             </div>
                         </div>
 
-                        <button className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-bold text-[#043927] shadow-md hover:bg-gray-50">
+                        <Link
+                            href={route('matching.index')}
+                            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-bold text-[#043927] shadow-md hover:bg-gray-50"
+                        >
                             <Zap size={14} />
                             Run AI Matching
-                        </button>
+                        </Link>
 
                     </div>
                 </div>
@@ -168,8 +171,8 @@ export default function Index({ candidates = [], filters = {} }) {
                                     key={item}
                                     onClick={() => setFilter(item)}
                                     className={`whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-semibold transition ${filter === item
-                                            ? 'bg-[#043927] text-white shadow-sm'
-                                            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                                        ? 'bg-[#043927] text-white shadow-sm'
+                                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
                                         }`}
                                 >
                                     {item}
@@ -298,8 +301,8 @@ function CandidateCard({ candidate, outreachSent, onOutreach }) {
                     onClick={onOutreach}
                     disabled={outreachSent}
                     className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold transition ${outreachSent
-                            ? 'cursor-default bg-emerald-50 text-emerald-600'
-                            : 'bg-[#E4F3EE] text-[#043927] hover:bg-[#043927] hover:text-white'
+                        ? 'cursor-default bg-emerald-50 text-emerald-600'
+                        : 'bg-[#E4F3EE] text-[#043927] hover:bg-[#043927] hover:text-white'
                         }`}
                 >
                     <Send size={12} />

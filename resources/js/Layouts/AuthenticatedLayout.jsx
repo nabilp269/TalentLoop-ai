@@ -13,6 +13,7 @@ import {
     Search,
     ChevronDown,
     LogOut,
+    Brain,
 } from 'lucide-react';
 
 export default function AuthenticatedLayout({ header, children }) {
@@ -23,6 +24,7 @@ export default function AuthenticatedLayout({ header, children }) {
         { name: 'Dashboard', href: route('dashboard'), icon: LayoutDashboard, routeName: 'dashboard' },
         { name: 'Candidates', href: route('candidates.index'), icon: Users, routeName: 'candidates.*' },
         { name: 'Jobs / Vacancies', href: route('jobs.index'), icon: BriefcaseBusiness, routeName: 'jobs.*' },
+        { name: 'AI Matching', href: route('matching.index'), icon: Brain, routeName: 'matching.*' },
         { name: 'Interview Logs', href: route('interviews.index'), icon: ClipboardCheck, routeName: 'interviews.*' },
         { name: 'Analytics', href: route('analytics.index'), icon: BarChart3, routeName: 'analytics.*' },
         { name: 'Settings', href: route('settings.index'), icon: Settings, routeName: 'settings.*' },
@@ -114,13 +116,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                         }
                                     />
 
-                                    <span>{item.name}</span>
-
-                                    {item.name === 'AI Matching' && (
-                                        <span className="ml-auto rounded-full bg-[#16A085]/20 px-2 py-0.5 text-[9px] font-bold text-[#65D6B5]">
-                                            AI
-                                        </span>
-                                    )}
+                                    <span className="flex items-center gap-1.5">
+                                        {item.name}
+                                        {item.name === 'AI Matching' && (
+                                            <span className="rounded-full bg-[#16A085]/20 px-2 py-0.5 text-[9px] font-bold text-[#65D6B5]">
+                                                AI
+                                            </span>
+                                        )}
+                                    </span>
                                 </Link>
                             );
                         })}

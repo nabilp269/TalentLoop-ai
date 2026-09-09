@@ -108,6 +108,56 @@ export default function Dashboard() {
                     </div>
                 </div>
 
+                {/* HERO — shortcut langsung ke Talent Pool saat dashboard dibuka */}
+                <section className="relative mt-6 overflow-hidden rounded-2xl bg-gradient-to-br from-[#043927] to-[#01140E] p-6 text-white shadow-xl shadow-[#043927]/20 sm:p-8">
+
+                    <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+
+                        <div className="max-w-xl">
+
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+                                <FileText size={20} />
+                            </div>
+
+                            <h2 className="mt-4 text-xl font-bold leading-snug sm:text-2xl">
+                                Turn Dead CVs Into
+                                <br />
+                                Ready-to-Hire Assets.
+                            </h2>
+
+                            <p className="mt-2 max-w-md text-xs leading-relaxed text-white/50 sm:text-sm">
+                                Gunakan kembali kandidat terbaik dari database lama
+                                sebelum mencari kandidat baru.
+                            </p>
+
+                            <div className="mt-5 flex flex-wrap gap-3">
+                                <Link
+                                    href={route('candidates.index')}
+                                    className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-xs font-bold text-[#043927] hover:bg-gray-100"
+                                >
+                                    <Search size={14} />
+                                    Explore Talent Pool
+                                </Link>
+
+                                <Link
+                                    href={route('cv.import')}
+                                    className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-semibold text-white hover:bg-white/10"
+                                >
+                                    <Upload size={14} />
+                                    Import CV
+                                </Link>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {/* DECORATION */}
+                    <div className="absolute -right-16 -top-16 h-[200px] w-[200px] rounded-full bg-gradient-to-bl from-[#65D6B5] to-[#16A085] opacity-20 blur-[50px] mix-blend-screen" />
+                    <div className="absolute -bottom-20 right-20 h-[150px] w-[150px] rounded-full bg-[#16A085] opacity-30 blur-[40px]" />
+
+                </section>
+
                 {/* STATS — 2 cols on mobile, 4 on large */}
                 <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
 
@@ -268,7 +318,7 @@ export default function Dashboard() {
                             icon={Brain}
                             title="AI Matching"
                             description="Cari kandidat terbaik"
-                            href={route('candidates.index')}
+                            href={route('matching.index')}
                         />
 
                         <QuickAction
@@ -290,7 +340,7 @@ export default function Dashboard() {
                 </section>
 
                 {/* BOTTOM INFO */}
-                <section className="mt-6 grid gap-5 md:grid-cols-2">
+                <section className="mt-6">
 
                     {/* RECRUITMENT PROGRESS */}
                     <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
@@ -316,38 +366,6 @@ export default function Dashboard() {
                             <Progress label="AI Matching" value="64%" />
                             <Progress label="Interview" value="38%" />
                         </div>
-
-                    </div>
-
-                    {/* TALENTLOOP PROMO CARD */}
-                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#043927] to-[#01140E] p-6 text-white shadow-xl shadow-[#043927]/20">
-
-                        <div className="relative z-10">
-
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                                <FileText size={20} />
-                            </div>
-
-                            <h2 className="mt-5 text-lg font-bold leading-snug">
-                                Turn Dead CVs Into
-                                <br />
-                                Ready-to-Hire Assets.
-                            </h2>
-
-                            <p className="mt-2 max-w-xs text-xs leading-relaxed text-white/50">
-                                Gunakan kembali kandidat terbaik dari database
-                                lama sebelum mencari kandidat baru.
-                            </p>
-
-                            <Link href={route('candidates.index')} className="mt-5 inline-block rounded-xl bg-white px-4 py-2.5 text-xs font-bold text-[#043927] hover:bg-gray-100">
-                                Explore Talent Pool
-                            </Link>
-
-                        </div>
-
-                        {/* DECORATION */}
-                        <div className="absolute -right-16 -top-16 h-[200px] w-[200px] rounded-full bg-gradient-to-bl from-[#65D6B5] to-[#16A085] opacity-20 blur-[50px] mix-blend-screen" />
-                        <div className="absolute -bottom-20 right-20 h-[150px] w-[150px] rounded-full bg-[#16A085] opacity-30 blur-[40px]" />
 
                     </div>
 

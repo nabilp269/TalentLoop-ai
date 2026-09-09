@@ -74,14 +74,14 @@ export default function GuestLayout({ children }) {
 
                                 <Feature
                                     number="01"
-                                    title="AI Parsing"
-                                    text="Ekstraksi CV otomatis"
+                                    title="AI Matching"
+                                    text="Analisis & cocokkan kandidat"
                                 />
 
                                 <Feature
                                     number="02"
-                                    title="AI Matching"
-                                    text="Cari kandidat terbaik"
+                                    title="Smart Import"
+                                    text="Import & kelola CV cepat"
                                 />
 
                                 <Feature
