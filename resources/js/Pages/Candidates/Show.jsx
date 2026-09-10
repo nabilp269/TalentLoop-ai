@@ -152,7 +152,7 @@ export default function Show({ candidate }) {
                             <div className="flex items-center justify-between">
                                 <h3 className="text-sm font-bold text-gray-900">Interview Log</h3>
                                 <Link
-                                    href={route('interviews.create')}
+                                    href={route('interviews.create', { candidate_id: candidate.id })}
                                     className="text-xs font-semibold text-[#043927] hover:underline"
                                 >
                                     + Jadwalkan
@@ -206,7 +206,7 @@ export default function Show({ candidate }) {
                                 </button>
 
                                 <Link
-                                    href={route('interviews.create')}
+                                    href={route('interviews.create', { candidate_id: candidate.id })}
                                     className="flex w-full items-center gap-3 rounded-xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                                 >
                                     <CalendarCheck size={16} />

@@ -42,14 +42,15 @@ class InterviewController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $candidates = Candidate::select('id', 'name', 'role')->orderBy('name')->get();
         $jobs       = Job::select('id', 'title')->where('status', 'Open')->orderBy('title')->get();
 
         return Inertia::render('Interviews/Create', [
-            'candidates' => $candidates,
-            'jobs'       => $jobs,
+            'candidates'         => $candidates,
+            'jobs'               => $jobs,
+            'defaultCandidateId' => $request->input('candidate_id'),
         ]);
     }
 
@@ -57,10 +58,17 @@ class InterviewController extends Controller
     {
         $data = $request->validate([
             'candidate_id' => 'required|exists:candidates,id',
-            'job_id'       => 'required|exists:jobs,id',
+            'job_id'       => 'required|exists:vacancies,id',
             'scheduled_at' => 'required|date',
             'type'         => 'required|in:Online,Offline,Phone',
             'notes'        => 'nullable|string',
+        ], [
+            'candidate_id.required' => 'Pilih kandidat terlebih dahulu.',
+            'candidate_id.exists'   => 'Kandidat yang dipilih tidak valid.',
+            'job_id.required'       => 'Pilih posisi / lowongan terlebih dahulu.',
+            'job_id.exists'         => 'Posisi / lowongan yang dipilih tidak valid.',
+            'scheduled_at.required' => 'Waktu interview wajib diisi.',
+            'type.required'         => 'Pilih tipe interview.',
         ]);
 
         $data['status'] = 'Scheduled';

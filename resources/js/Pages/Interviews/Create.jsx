@@ -2,9 +2,9 @@ import { useForm, Head, Link } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { ArrowLeft } from 'lucide-react';
 
-export default function Create({ candidates = [], jobs = [] }) {
+export default function Create({ candidates = [], jobs = [], defaultCandidateId = '' }) {
     const { data, setData, post, processing, errors } = useForm({
-        candidate_id: '',
+        candidate_id: defaultCandidateId || '',
         job_id:       '',
         scheduled_at: '',
         type:         'Online',

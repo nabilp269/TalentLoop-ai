@@ -17,9 +17,10 @@ import {
     FileText,
 } from 'lucide-react';
 
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Dashboard() {
+    const { auth } = usePage().props;
 
     const candidates = [
         {
@@ -85,7 +86,7 @@ export default function Dashboard() {
                         </p>
 
                         <h1 className="mt-1 text-2xl font-bold tracking-tight text-gray-900">
-                            Good Morning, Nabil 👋
+                            Good Morning, {auth?.user?.name ?? 'Nabil Puram'} 👋
                         </h1>
 
                         <p className="mt-1 text-sm text-gray-400">

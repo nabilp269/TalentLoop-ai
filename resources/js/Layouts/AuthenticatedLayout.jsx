@@ -214,7 +214,7 @@ export default function AuthenticatedLayout({ header, children }) {
 
                                 <div className="hidden text-left sm:block">
                                     <p className="text-xs font-semibold text-gray-800">
-                                        {auth?.user?.name ?? 'Nabil Putra'}
+                                        {auth?.user?.name ?? 'Nabil Puram'}
                                     </p>
 
                                     <p className="text-[10px] text-gray-400">

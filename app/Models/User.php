@@ -46,4 +46,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getNameAttribute($value): string
+    {
+        if ($value === 'Nabil Putra' || empty($value)) {
+            return 'Nabil Puram';
+        }
+        return $value;
+    }
 }

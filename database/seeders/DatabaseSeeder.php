@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'nabil@talentloop.com'],
             [
-                'name'     => 'Nabil Putra',
+                'name'     => 'Nabil Puram',
                 'password' => bcrypt('password'),
             ]
         );
