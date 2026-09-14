@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignId('job_id')->constrained('vacancies')->cascadeOnDelete();
             $table->dateTime('scheduled_at');
             $table->enum('type', ['Online', 'Offline', 'Phone'])->default('Online');
-            $table->enum('status', ['Scheduled', 'Done', 'Cancelled'])->default('Scheduled');
+            $table->enum('status', ['Scheduled', 'Interview', 'Done', 'Cancelled'])->default('Scheduled');
             $table->text('notes')->nullable();
             $table->timestamps();
         });

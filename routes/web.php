@@ -16,7 +16,7 @@ use Inertia\Inertia;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', fn() => redirect()->route('dashboard'));
+Route::get('/', fn() => Inertia::render('Welcome'))->name('welcome');
 
 
 /*
@@ -73,6 +73,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/interviews', [InterviewController::class, 'index'])->name('interviews.index');
     Route::get('/interviews/create', [InterviewController::class, 'create'])->name('interviews.create');
     Route::post('/interviews', [InterviewController::class, 'store'])->name('interviews.store');
+    Route::get('/interviews/{interview}/session', [InterviewController::class, 'session'])->name('interviews.session');
     Route::patch('/interviews/{interview}', [InterviewController::class, 'update'])->name('interviews.update');
 
 

@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\Interview;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
 class InterviewController extends Controller
@@ -22,6 +23,7 @@ class InterviewController extends Controller
             'id'           => $i->id,
             'type'         => $i->type,
             'status'       => $i->status,
+            'decision'     => $i->decision,
             'scheduled_at' => $i->scheduled_at->format('d M Y, H:i'),
             'notes'        => $i->notes,
             'candidate'    => [
@@ -29,6 +31,8 @@ class InterviewController extends Controller
                 'name'     => $i->candidate->name,
                 'role'     => $i->candidate->role,
                 'initials' => $i->candidate->initials,
+                'email'    => $i->candidate->email,
+                'phone'    => $i->candidate->phone,
             ],
             'job' => [
                 'id'    => $i->job->id,
@@ -51,6 +55,32 @@ class InterviewController extends Controller
             'candidates'         => $candidates,
             'jobs'               => $jobs,
             'defaultCandidateId' => $request->input('candidate_id'),
+        ]);
+    }
+
+    public function session(Interview $interview)
+    {
+        $interview->load(['candidate', 'job']);
+
+        return Inertia::render('Interviews/Session', [
+            'interview' => [
+                'id' => $interview->id,
+                'type' => $interview->type,
+                'status' => $interview->status,
+                'notes' => $interview->notes,
+                'scheduled_at' => $interview->scheduled_at->format('d M Y, H:i'),
+                'candidate' => [
+                    'id' => $interview->candidate->id,
+                    'name' => $interview->candidate->name,
+                    'role' => $interview->candidate->role,
+                    'email' => $interview->candidate->email,
+                    'phone' => $interview->candidate->phone,
+                ],
+                'job' => [
+                    'id' => $interview->job->id,
+                    'title' => $interview->job->title,
+                ],
+            ],
         ]);
     }
 
@@ -85,12 +115,47 @@ class InterviewController extends Controller
     public function update(Request $request, Interview $interview)
     {
         $data = $request->validate([
-            'status' => 'required|in:Scheduled,Done,Cancelled',
+            'status' => 'sometimes|required|in:Interview,Done,Cancelled',
             'notes'  => 'nullable|string',
+            'decision' => 'nullable|in:Hired,Rejected,Consideration',
         ]);
+
+        // Notes can be saved throughout an active interview without changing its status.
+        if (! isset($data['status'])) {
+            $interview->update($data);
+
+            return back()->with('success', 'Catatan interview disimpan.');
+        }
+
+        $allowedTransitions = [
+            'Scheduled' => ['Interview'],
+            'Interview' => ['Done', 'Cancelled'],
+        ];
+
+        if (! in_array($data['status'], $allowedTransitions[$interview->status] ?? [], true)) {
+            throw ValidationException::withMessages([
+                'status' => 'Status interview tidak dapat diubah melalui tahap ini.',
+            ]);
+        }
+
+        if ($data['status'] === 'Done' && empty($data['decision'])) {
+            throw ValidationException::withMessages([
+                'decision' => 'Pilih hasil interview terlebih dahulu.',
+            ]);
+        }
 
         $interview->update($data);
 
-        return back()->with('success', 'Status interview diperbarui.');
+        if ($data['status'] === 'Done') {
+            $candidateStatus = match ($data['decision']) {
+                'Hired' => 'Hired',
+                'Rejected' => 'Rejected',
+                default => 'Interview',
+            };
+
+            $interview->candidate->update(['status' => $candidateStatus]);
+        }
+
+        return back()->with('success', 'Hasil interview berhasil disimpan.');
     }
 }

@@ -140,7 +140,7 @@ export default function Create() {
                         </Link>
                         <button type="submit" disabled={processing}
                             className="rounded-xl bg-[#043927] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#0B5D45] disabled:opacity-60">
-                            {processing ? 'Menyimpan...' : 'Simpan Lowongan'}
+                            {processing ? 'Menyimpan...' : 'Simpan & Lanjut AI Matching'}
                         </button>
                     </div>
 

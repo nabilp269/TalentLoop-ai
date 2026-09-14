@@ -46,7 +46,7 @@ class CandidateController extends Controller
         return Inertia::render('Candidates/Index', [
             'candidates' => $candidates,
             'jobs'       => $jobs,
-            'filters'    => $request->only('search', 'status', 'tab'),
+            'filters'    => $request->only('search', 'status', 'tab', 'job'),
         ]);
     }
 

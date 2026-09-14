@@ -68,8 +68,10 @@ class JobController extends Controller
 
         $job = Job::create($data);
 
-        return redirect()->route('jobs.show', $job)
-            ->with('success', 'Lowongan berhasil dibuat.');
+        return redirect()->route('candidates.index', [
+            'tab' => 'matching',
+            'job' => $job->id,
+        ])->with('success', 'Lowongan berhasil dibuat. Jalankan AI Matching untuk menemukan kandidat terbaik.');
     }
 
     public function show(Job $job)

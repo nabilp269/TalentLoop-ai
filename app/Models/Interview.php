@@ -15,6 +15,7 @@ class Interview extends Model
         'scheduled_at',
         'type',
         'status',
+        'decision',
         'notes',
     ];
 

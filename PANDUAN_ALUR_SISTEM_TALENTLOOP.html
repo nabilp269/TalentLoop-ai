@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Alur Sistem TalentLoop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #16a085;
+            padding-bottom: 25px;
+            margin-bottom: 35px;
+        }
+        .badge {
+            display: inline-block;
+            background: #e4f3ee;
+            color: #043927;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            color: #043927;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .subtitle {
+            color: #6b7280;
+            font-size: 14px;
+            margin: 0;
+        }
+        h2 {
+            color: #043927;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid #16a085;
+            padding-left: 12px;
+        }
+        h3 {
+            color: #16a085;
+            font-size: 15px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        p {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            color: #4b5563;
+        }
+        ul {
+            margin: 0 0 16px 0;
+            padding-left: 20px;
+        }
+        li {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+        .highlight-box {
+            background-color: #f5f9f7;
+            border-left: 4px solid #16a085;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #043927;
+            font-weight: 500;
+        }
+        .step-number {
+            background: #043927;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .footer {
+            margin-top: 45px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        @media print {
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; border: none; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <span class="badge">DOKUMEN PANDUAN PENGGUNA</span>
+        <h1>PANDUAN ALUR SISTEM TALENTLOOP</h1>
+        <p class="subtitle">Platform Intelijen Talenta & Rekrutmen Otomatis Berbasis AI • Recruiter: <strong>Nabil Puram</strong></p>
+    </div>
+
+    <div class="highlight-box">
+        💡 <strong>Intisari Alur Sistem:</strong><br>
+        Landing Page (/) ➔ Login ➔ Dashboard ➔ Buat Lowongan (Jobs) ➔ AI Matching di Halaman Candidates ➔ Kirim Outreach ➔ Jadwalkan di Interview Logs ➔ Kandidat Hired ➔ Evaluasi di Analytics.
+    </div>
+
+    <h2><span class="step-number">1</span> Landing Page Publik (Halaman Depan /)</h2>
+    <p>Halaman perkenalan resmi platform sebelum masuk ke dashboard:</p>
+    <ul>
+        <li><strong>Sticky Navigation:</strong> Logo resmi TalentLoop (simbol infinity hijau zamrud), menu navigasi (Fitur Utama, AI Matching, Cara Kerja, FAQ), dan tombol pintar (<strong>Masuk</strong> atau <strong>Buka Dashboard</strong> jika sudah login).</li>
+        <li><strong>Hero Section:</strong> Memuat tagline utama <em>"Turn Dead CVs Into Ready-to-Hire Assets"</em> dan deskripsi solusi platform.</li>
+        <li><strong>Simulasi Mockup AI Matching:</strong> Kartu visual interaktif hasil pemindaian kandidat (skor 96% Match, skill tags, dan alasan rekomendasi AI).</li>
+        <li><strong>Metrik Efisiensi:</strong> 85% penghematan waktu skrining, 10x pencarian lebih cepat, dan 94% akurasi AI.</li>
+        <li><strong>Showcase Fitur & Cara Kerja:</strong> Memperkenalkan 6 fitur utama dan 4 tahapan rekrutmen praktis.</li>
+    </ul>
+
+    <h2><span class="step-number">2</span> Autentikasi & Login (/login)</h2>
+    <ul>
+        <li>Pengguna masuk menggunakan email resmi (<em>nabil@talentloop.com</em>) dan kata sandi.</li>
+        <li>Sistem memverifikasi akun Anda sebagai <strong>Nabil Puram</strong> dan langsung mengarahkan ke halaman Dashboard.</li>
+    </ul>
+
+    <h2><span class="step-number">3</span> Dashboard (/dashboard) — Ruang Kendali Harian</h2>
+    <ul>
+        <li><strong>Greeting Personal:</strong> Sambutan ramah <em>"Good Morning, Nabil Puram 👋"</em> beserta tanggal hari ini.</li>
+        <li><strong>Stat Cards:</strong> Pemantauan cepat indikator Total Candidates, Active Vacancies, Interviews Scheduled, dan AI Match Score.</li>
+        <li><strong>Quick Actions:</strong> Akses kilat ke tombol Buka AI Matching, Buat Lowongan Baru, Cari Talenta, dan Import CV.</li>
+        <li><strong>Pipeline Aktivitas:</strong> Ringkasan kandidat-kandidat unggulan terkini yang siap diproses lebih lanjut.</li>
+    </ul>
+
+    <h2><span class="step-number">4</span> Jobs / Vacancies (/jobs) — Manajemen Lowongan Kerja</h2>
+    <ul>
+        <li><strong>Katalog Lowongan:</strong> Melihat daftar lowongan aktif perusahaan (status: Open, Draft, Closed).</li>
+        <li><strong>Buat Lowongan Baru:</strong> Mengisi judul posisi (misal: <em>Senior Frontend Developer</em>), departemen, tipe kerja (Full-time/Remote), kisaran gaji, deadline, dan syarat keahlian (requirements) sebagai tolok ukur AI.</li>
+        <li><strong>Detail Lowongan:</strong> Melihat pelamar yang mendaftar dan memantau status kandidat yang cocok untuk posisi tersebut.</li>
+    </ul>
+
+    <h2><span class="step-number">5</span> Candidates & AI Matching (/candidates) — Database & Kecerdasan Buatan</h2>
+    <p><em>Fitur AI Matching telah disatukan langsung ke dalam menu Candidates melalui tab navigasi terpadu:</em></p>
+    
+    <h3>Tab 1: Semua Kandidat (Talent Pool Directory)</h3>
+    <ul>
+        <li><strong>Database Talenta:</strong> Menampilkan kartu kandidat lengkap dengan avatar inisial, posisi, keahlian, status (Available, Interview, Hired, Rejected), dan Match Score.</li>
+        <li><strong>Pencarian & Filter Status:</strong> Pencarian real-time berdasarkan nama, posisi, atau keahlian pelamar.</li>
+        <li><strong>Import CV:</strong> Unggah resume (PDF/DOCX) dengan ekstraksi data otomatis tanpa perlu mengetik ulang manual.</li>
+        <li><strong>Banner AI Smart Matcher:</strong> Banner ajakan dengan tombol <em>"Buka AI Matching"</em> yang langsung mengarahkan ke tab kedua.</li>
+    </ul>
+
+    <h3>Tab 2: AI Matching (Kecerdasan Buatan Pemindai Kecocokan)</h3>
+    <ul>
+        <li><strong>Vacancy Selector:</strong> Memilih posisi lowongan aktif dari database lowongan kerja.</li>
+        <li><strong>Run AI Matching:</strong> Tombol pemindaian cerdas yang mencocokkan profil kandidat dengan syarat pekerjaan dalam hitungan detik.</li>
+        <li><strong>Potential Matches:</strong> Daftar kandidat berurutan dari persentase skor kecocokan tertinggi (misal: 96%, 94%, 92%) lengkap dengan progress bar visual.</li>
+        <li><strong>AI Reason:</strong> Penjelasan tertulis AI yang menerangkan mengapa kandidat tersebut sangat direkomendasikan.</li>
+        <li><strong>Aksi Cepat:</strong> Tombol langsung untuk <em>Kirim Outreach</em> atau <em>Lihat Profil</em>.</li>
+    </ul>
+
+    <h2><span class="step-number">6</span> Detail Kandidat & Kirim Outreach (/candidates/{id})</h2>
+    <ul>
+        <li><strong>Profil Mendalam:</strong> Informasi kontak lengkap (Email, WhatsApp/No. HP), pengalaman kerja, catatan khusus, dan tautan dokumen asli CV.</li>
+        <li><strong>Kirim Outreach:</strong> Mengirim pesan pendekatan ramah via Email, WhatsApp, atau LinkedIn yang otomatis tercatat di <em>Outreach History</em>.</li>
+        <li><strong>Jadwalkan Interview:</strong> Tombol pintas yang langsung membuka form jadwal wawancara dengan membawa ID kandidat terpilih secara otomatis.</li>
+    </ul>
+
+    <h2><span class="step-number">7</span> Interview Logs (/interviews) — Penjadwalan Wawancara</h2>
+    <ul>
+        <li><strong>Form Penjadwalan:</strong> Nama kandidat otomatis terisi, memilih posisi lowongan dari database (telah valid tanpa error), menentukan tanggal dan jam via date-time picker, memilih tipe (Online/Offline/Phone), dan menaruh link meeting.</li>
+        <li><strong>Otomasi Status:</strong> Saat jadwal disimpan, status kandidat otomatis berubah dari <em>Available</em> menjadi <strong>Interview</strong>.</li>
+        <li><strong>Monitoring & Penyelesaian:</strong> Memantau wawancara hari ini, memperbarui status menjadi <strong>Done</strong>, atau menandai kandidat sebagai <strong>Hired</strong> jika lulus seleksi akhir.</li>
+    </ul>
+
+    <h2><span class="step-number">8</span> Analytics (/analytics) — Laporan & Evaluasi Data</h2>
+    <ul>
+        <li><strong>Indikator Kinerja:</strong> Ringkasan metrik total talenta masuk, yang sedang di tahap interview, hingga tingkat penerimaan kerja.</li>
+        <li><strong>Recruitment Funnel:</strong> Grafik corong rekrutmen: <em>Kandidat Masuk ➔ Tersaring AI ➔ Wawancara ➔ Hired</em> untuk evaluasi efisiensi rekrutmen tim.</li>
+    </ul>
+
+    <h2><span class="step-number">9</span> Settings & Logout (/settings)</h2>
+    <ul>
+        <li><strong>Pengaturan Akun:</strong> Memastikan identitas akun recruiter tercatat sebagai <strong>Nabil Puram</strong>.</li>
+        <li><strong>Keamanan:</strong> Memperbarui kata sandi akun secara berkala.</li>
+        <li><strong>Logout:</strong> Keluar dari sesi kerja dengan aman melalui tombol logout di bagian bawah navigasi sidebar.</li>
+    </ul>
+
+    <div class="footer">
+        © 2026 TalentLoop AI. Dokumen Panduan Resmi Sistem Alur Rekrutmen.
+    </div>
+
+</div>
+
+</body>
+</html>
+

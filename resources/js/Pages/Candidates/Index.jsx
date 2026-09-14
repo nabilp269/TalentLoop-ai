@@ -34,7 +34,10 @@ export default function Index({ candidates = [], jobs = [], filters = {} }) {
     const [outreachDone, setOutreachDone] = useState({});
 
     // AI Matching state
-    const defaultJobId = jobs.length > 0 ? String(jobs[0].id) : 'frontend';
+    const requestedJobId = String(filters.job ?? '');
+    const defaultJobId = jobs.some((job) => String(job.id) === requestedJobId)
+        ? requestedJobId
+        : jobs.length > 0 ? String(jobs[0].id) : 'frontend';
     const [selectedJobId, setSelectedJobId] = useState(defaultJobId);
     const [matchingSearch, setMatchingSearch] = useState('');
     const [isScanning, setIsScanning] = useState(false);
