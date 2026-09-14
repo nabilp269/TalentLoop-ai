@@ -39,6 +39,7 @@ class CandidateController extends Controller
             'score'            => $c->score,
             'initials'         => $c->initials,
             'cv_path'          => $c->cv_path,
+            'notes'            => $c->notes,
         ]);
 
         $jobs = Job::where('status', 'Open')->get(['id', 'title', 'department', 'requirements']);

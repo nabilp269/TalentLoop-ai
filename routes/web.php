@@ -74,6 +74,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/interviews/create', [InterviewController::class, 'create'])->name('interviews.create');
     Route::post('/interviews', [InterviewController::class, 'store'])->name('interviews.store');
     Route::get('/interviews/{interview}/session', [InterviewController::class, 'session'])->name('interviews.session');
+    Route::post('/interviews/{interview}/recording', [InterviewController::class, 'storeRecording'])->name('interviews.recording.store');
     Route::patch('/interviews/{interview}', [InterviewController::class, 'update'])->name('interviews.update');
 
 

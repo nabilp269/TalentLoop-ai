@@ -17,10 +17,13 @@ class Interview extends Model
         'status',
         'decision',
         'notes',
+        'recording_path',
+        'recorded_at',
     ];
 
     protected $casts = [
         'scheduled_at' => 'datetime',
+        'recorded_at' => 'datetime',
     ];
 
     public function candidate()

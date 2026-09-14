@@ -17,6 +17,7 @@ import {
     Users,
     ArrowUpRight,
     RefreshCw,
+    ShieldAlert,
 } from 'lucide-react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
@@ -104,6 +105,7 @@ export default function Index({ candidates = [], jobs = [], filters = {} }) {
                     ...c,
                     matchScore,
                     reason,
+                    aiCheck: assessAiWriting(c),
                 };
             })
             .sort((a, b) => b.matchScore - a.matchScore)
@@ -489,6 +491,8 @@ export default function Index({ candidates = [], jobs = [], filters = {} }) {
                                                 ))}
                                             </div>
 
+                                            <AiWritingIndicator result={candidate.aiCheck} />
+
                                             {/* AI REASON */}
                                             <div className="mt-3.5 rounded-xl bg-[#F5F9F7] p-3 border border-[#E4F3EE]">
                                                 <div className="flex gap-2">
@@ -646,4 +650,24 @@ function CandidateCard({ candidate, outreachSent, onOutreach }) {
             </div>
         </div>
     );
+}
+
+function assessAiWriting(candidate) {
+    // This is a screening signal, not proof. The app currently has structured CV data,
+    // so it only evaluates text that is available in the candidate profile/notes.
+    const text = `${candidate.notes ?? ''} ${(candidate.skills ?? []).join(' ')}`.trim().toLowerCase();
+    if (!text || text.length < 80) return { level: 'Perlu verifikasi', score: null, detail: 'Teks CV belum cukup untuk dianalisis.' };
+    const phrases = ['sebagai model ai', 'berorientasi pada hasil', 'sangat termotivasi', 'bersemangat untuk', 'memiliki kemampuan yang kuat', 'berkontribusi secara signifikan'];
+    const hits = phrases.filter(phrase => text.includes(phrase)).length;
+    const repeatedWords = text.split(/\s+/).filter((word, index, words) => word.length > 8 && words.indexOf(word) !== index).length;
+    const score = Math.min(92, 20 + hits * 24 + Math.min(20, repeatedWords * 4));
+    if (score < 45) return { level: 'Indikasi rendah', score, detail: 'Tidak banyak pola bahasa generatif yang terdeteksi.' };
+    return { level: 'Indikasi AI', score, detail: 'Ada pola bahasa yang perlu dikonfirmasi lewat interview.' };
+}
+
+function AiWritingIndicator({ result }) {
+    const flagged = result.level === 'Indikasi AI';
+    return <div className={`mt-3 rounded-xl border p-3 ${flagged ? 'border-amber-200 bg-amber-50' : 'border-gray-100 bg-gray-50'}`}>
+        <div className="flex items-start gap-2"><ShieldAlert size={14} className={`mt-0.5 shrink-0 ${flagged ? 'text-amber-600' : 'text-gray-400'}`} /><div><p className={`text-[11px] font-bold ${flagged ? 'text-amber-800' : 'text-gray-700'}`}>Deteksi tulisan AI: {result.level}{result.score !== null ? ` (${result.score}%)` : ''}</p><p className="mt-0.5 text-[10px] leading-relaxed text-gray-500">{result.detail} Ini adalah indikator, bukan bukti bahwa CV dibuat AI.</p></div></div>
+    </div>;
 }

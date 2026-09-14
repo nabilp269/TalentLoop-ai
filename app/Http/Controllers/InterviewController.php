@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\Interview;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -26,6 +27,8 @@ class InterviewController extends Controller
             'decision'     => $i->decision,
             'scheduled_at' => $i->scheduled_at->format('d M Y, H:i'),
             'notes'        => $i->notes,
+            'recording_url' => $i->recording_path ? Storage::disk('public')->url($i->recording_path) : null,
+            'recorded_at'   => $i->recorded_at?->format('d M Y, H:i'),
             'candidate'    => [
                 'id'       => $i->candidate->id,
                 'name'     => $i->candidate->name,
@@ -68,6 +71,8 @@ class InterviewController extends Controller
                 'type' => $interview->type,
                 'status' => $interview->status,
                 'notes' => $interview->notes,
+                'recording_url' => $interview->recording_path ? Storage::disk('public')->url($interview->recording_path) : null,
+                'recorded_at' => $interview->recorded_at?->format('d M Y, H:i'),
                 'scheduled_at' => $interview->scheduled_at->format('d M Y, H:i'),
                 'candidate' => [
                     'id' => $interview->candidate->id,
@@ -157,5 +162,24 @@ class InterviewController extends Controller
         }
 
         return back()->with('success', 'Hasil interview berhasil disimpan.');
+    }
+
+    public function storeRecording(Request $request, Interview $interview)
+    {
+        $data = $request->validate([
+            'recording' => 'required|file|mimetypes:video/webm,video/mp4,video/quicktime,audio/webm,audio/ogg,audio/mpeg,audio/mp4|max:512000',
+        ], [
+            'recording.required' => 'File rekaman wajib diunggah.',
+            'recording.max' => 'Ukuran rekaman maksimal 500 MB.',
+        ]);
+
+        if ($interview->recording_path) {
+            Storage::disk('public')->delete($interview->recording_path);
+        }
+
+        $path = $data['recording']->store("interview-recordings/{$interview->id}", 'public');
+        $interview->update(['recording_path' => $path, 'recorded_at' => now()]);
+
+        return back()->with('success', 'Rekaman interview berhasil disimpan.');
     }
 }
